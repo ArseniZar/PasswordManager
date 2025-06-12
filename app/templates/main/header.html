@@ -1,11 +1,30 @@
-<header class="fixed w-full bg-gray-800 shadow-lg">
+<header class="fixed w-full bg-gray-800 shadow-lg z-50">
   <div class="max-w-7xl mx-auto px-4">
-    <div class="flex justify-between items-center py-4">
+    <div class="relative flex justify-between items-center py-4">
       <div class="flex items-center">
         <h1 class="text-2xl font-bold text-white">
           <a href="{{ url_for('home.index') }}" class="hover:underline">Password Manager</a>
         </h1>
       </div>
+
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+      <div class="flash-container absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-max max-w-lg">
+        {% for category, message in messages %}
+        {% set colors = {
+        'success': 'bg-green-500 text-white',
+        'error': 'bg-red-600 text-white',
+        'info': 'bg-blue-500 text-white',
+        'warning': 'bg-yellow-400 text-black'
+        } %}
+        <div class="alert {{ colors.get(category, 'bg-gray-500 text-white') }} opacity-0 text-sm font-medium px-4 py-3 rounded-xl shadow-xl mb-2 transition-opacity duration-500 ease-out">
+          <span>{{ message }}</span>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+      {% endwith %}
+
       <div class="flex items-center space-x-2">
         {% if current_user.is_authenticated %}
         <a href="{{ url_for('home.profile') }}"
@@ -27,6 +46,8 @@
         </a>
         {% endif %}
       </div>
+
     </div>
   </div>
 </header>
+ <script type='module' src="{{url_for('static', filename='js/header/alertAnimations.js')}}"></script>

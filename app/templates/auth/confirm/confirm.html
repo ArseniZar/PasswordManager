@@ -9,7 +9,7 @@
         <h2 class="text-2xl font-bold text-center text-white mb-6">Email Confirmation</h2>
 
         <p class="mb-4 text-gray-300 text-center">
-            Код отправлен на: <span class="font-semibold">{{ user.email }}</span>
+            Code sent to <span class="font-semibold">{{ user.email }}</span>
         </p>
 
         <div class="flex items-center mb-4 gap-2">
@@ -18,7 +18,7 @@
         </div>
 
         <div class="mb-4">
-            <label for="{{ form.code.id }}" class="block text-gray-200 mb-2">Введите код</label>
+            <label for="{{ form.code.id }}" class="block text-gray-200 mb-2">Enter the code</label>
             {{ form.code(class="w-full p-2 bg-gray-700 border border-gray-600 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500", id=form.code.id) }}
             {% if form.code.errors %}
             <ul class="text-red-500 text-sm mt-1">
@@ -60,10 +60,9 @@ function updateTimer() {
     document.getElementById('send-code-btn').disabled = seconds > 0;
 }
 
-// Запуск таймера только если код был отправлен
 {% if code_sent %}
 window.addEventListener('DOMContentLoaded', function() {
-    startTimer(60); // 60 секунд до повторной отправки
+    startTimer(60);
 });
 {% endif %}
 </script>
