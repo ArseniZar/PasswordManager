@@ -20,8 +20,6 @@ class User(db.Model, UserMixin):
     is_confirmed: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
     encryption_salt: Mapped[bytes] = mapped_column(LargeBinary(16), nullable=False)
 
-    passwords: Mapped[List["Passwords"]] = relationship(
-        "Passwords", back_populates="user", cascade="all, delete-orphan"
-    )
+    passwords: Mapped[List["Passwords"]] = relationship("Passwords", back_populates="user", cascade="all, delete-orphan")
     
     

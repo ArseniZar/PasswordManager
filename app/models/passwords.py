@@ -14,11 +14,9 @@ class Passwords(db.Model):
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     url: Mapped[str] = mapped_column(String(200), nullable=False)
-    login: Mapped[str] = mapped_column(String(100), nullable=False)  # логин от сайта
-    password: Mapped[str] = mapped_column(String(200), nullable=False)  # сам пароль
-    description: Mapped[str | None] = mapped_column(
-        String(255), nullable=True
-    )  # описание
+    login: Mapped[str] = mapped_column(String(100), nullable=False) 
+    password: Mapped[str] = mapped_column(String(200), nullable=False)  
+    description: Mapped[str | None] = mapped_column(String(255), nullable=True) 
     site: Mapped[str] = mapped_column(String(50), nullable=False)
     user_id: Mapped[int] = mapped_column(ForeignKey("user.id"), nullable=False)
     user: Mapped[User] = relationship(back_populates="passwords")
