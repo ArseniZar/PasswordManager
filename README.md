@@ -1,8 +1,4 @@
-Oczywiście, masz rację. To kluczowa część dokumentacji. Dodałem brakującą sekcję z objaśnieniem wszystkich parametrów do pliku `config.py` i przetłumaczyłem ją na język polski, zachowując całe formatowanie.
 
-Oto kompletny i finalny plik `README.md` ze wszystkimi elementami.
-
----
 
 # 🔐 Menedżer Haseł
 
