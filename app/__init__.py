@@ -20,8 +20,9 @@ def create_app(config_class=Config):
     mail.init_app(app)
     init_serializer(app)
     
-    login_manager.login_view = 'auth.login'
-    login_manager.login_message ='вы не можете получить доступ'
+    login_manager.login_view = app.config['LOGIN_VIEW']
+    login_manager.login_message = app.config['LOGIN_MESSAGE']
+
     with app.app_context():
         from .models import user, passwords
 
