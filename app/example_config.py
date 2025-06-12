@@ -26,3 +26,7 @@ class Config(object):
 
     # Default sender for outgoing emails
     MAIL_DEFAULT_SENDER = ("Password Manager", "your-email@gmail.com")
+    
+    
+    LOGIN_VIEW = "auth.login"
+    LOGIN_MESSAGE = "You don't have permission"
