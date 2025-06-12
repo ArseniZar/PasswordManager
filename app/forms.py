@@ -88,16 +88,6 @@ class ResetPasswordForm(FlaskForm):
     submit = SubmitField("Reset Password")
 
 
-
-
-class AddPasswordForm(FlaskForm):
-    submit_add = SubmitField("New")
-
-
-class DeletePasswordForm(FlaskForm):
-    submit_delete = SubmitField("Delete Selected")
-
-
 class CreatePasswordForm(FlaskForm):
     site = StringField(
         "Site",
@@ -125,3 +115,16 @@ class CreatePasswordForm(FlaskForm):
         render_kw={"placeholder": "Any additional notes..."},
     )
     submit = SubmitField("Save")
+
+
+class EditPasswordForm(FlaskForm):
+    site = StringField("Site", validators=[DataRequired(), Length(min=1, max=100)])
+    username = StringField(
+        "Username", validators=[DataRequired(), Length(min=1, max=100)]
+    )
+    password = StringField(
+        "Password", validators=[DataRequired(), Length(min=1, max=100)]
+    )
+    url = StringField("URL", validators=[Optional(), URL(), Length(max=200)])
+    comments = TextAreaField("Comments", validators=[Optional(), Length(max=500)])
+    submit = SubmitField("Update Password")
